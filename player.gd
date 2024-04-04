@@ -10,10 +10,12 @@ const lean_rot  = 40
 var return_pos = Vector3(0,0,0)
 var in_lean_dist = false
 var in_lean_rot = false
+var stuck = false	
 
 func _ready():
 	return_pos = position
 	scopetex.visible = false
+	Input.mouse_mode = (Input.MOUSE_MODE_CAPTURED)
 	
 func zoom(value):
 	if camera.fov > value:
@@ -25,12 +27,17 @@ func unzoom():
 		camera.fov = 75
 		
 func _input(event):
-	if event is InputEventMouseMotion and leaning:
-		rotate_y(deg_to_rad(-event.relative.x)*0.5)
-		rotate_x(deg_to_rad(-event.relative.y) * 0.5)
+	if event is InputEventMouseMotion and !stuck:
+		camera.rotate_y(deg_to_rad(-event.relative.x)*0.5)
+		camera.rotate_x(deg_to_rad(-event.relative.y)*0.5)
+		camera.rotation.x = clamp(camera.rotation.x,deg_to_rad(-30),deg_to_rad(30))
+		camera.rotation.y = clamp(camera.rotation.y,deg_to_rad(-30),deg_to_rad(30))
+		camera.rotation.z = 0
+		
+	elif  event is InputEventMouseMotion:
+		rotation += (Vector3(-event.relative.y*0.005,-event.relative.x*0.005,0))
 		rotation.x = clamp(rotation.x,deg_to_rad(-30),deg_to_rad(30))
 		rotation.y = clamp(rotation.y,deg_to_rad(-30),deg_to_rad(30))
-		
 		
 func _process(delta):
 	if leaning == false and (in_lean_dist == true or in_lean_rot == true):
@@ -50,8 +57,6 @@ func _process(delta):
 			rotation.z = deg_to_rad(0)
 			in_lean_rot = false
 
-		rotation.x = 0
-		rotation.y = 0
 		
 		
 	if Input.is_action_pressed("Lean Right"):
@@ -97,7 +102,12 @@ func _process(delta):
 				body.queue_free()
 	if Input.is_action_pressed("Aim"):
 		scopetex.visible = true
+		stuck = true
+		camera.rotation.x = deg_to_rad(0)
+		camera.rotation.y = deg_to_rad(0)
+	if stuck:
 		zoom(40)
+		
 		
 
 	
