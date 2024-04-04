@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8p7dklq7a0jv"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_cqqhe"]
+[ext_resource type="Texture2D" uid="uid://blcmvsdb20gk5" path="res://New Piskel-1.png.png" id="2_e0iww"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kky20"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_p3cc2"]
+
+[node name="player" type="Area3D"]
+script = ExtResource("1_cqqhe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_kky20")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.567077, -0.0334759)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, -2.18557e-08, -0.1, 0, 0.5, -4.37114e-09, 0.137355, 0.451603, -0.709565)
+mesh = SubResource("CylinderMesh_p3cc2")
+
+[node name="scope_tex" type="TextureRect" parent="."]
+texture_filter = 1
+texture_repeat = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_e0iww")
+expand_mode = 1
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.125911, 0.487343, -1.45111)
+target_position = Vector3(0, -100, 0)
+collision_mask = 3
+collide_with_areas = true
+debug_shape_custom_color = Color(0.996078, 0.996078, 0.996078, 1)
+debug_shape_thickness = 5
