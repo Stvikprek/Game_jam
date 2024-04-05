@@ -57,8 +57,6 @@ func _process(delta):
 	elif Input.is_action_just_released("Lean Right"):
 		leaning = false
 
-
-	
 	if Input.is_action_pressed("Lean Left"):
 		if rotation.z < deg_to_rad(lean_rot):
 			rotate_z(deg_to_rad(lean_rot/20))

@@ -8,6 +8,7 @@
 [sub_resource type="CylinderMesh" id="CylinderMesh_p3cc2"]
 
 [node name="player" type="Area3D"]
+collision_mask = 3
 script = ExtResource("1_cqqhe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
