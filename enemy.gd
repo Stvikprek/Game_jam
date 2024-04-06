@@ -6,6 +6,7 @@ var shootsound = preload("res://explosion.wav")
 @onready var bull_path = $RayCast3D
 @export var index:int
 @onready var parent = get_parent()
+var turn_taken = false
 func fire_gun():
 	if bull_path.is_colliding():
 		if bull_path.get_collider().collision_layer == 1:
@@ -22,6 +23,13 @@ func _process(delta):
 		var target_vec = global_position.direction_to(player.position)
 		var target_basis = Basis.looking_at(target_vec)
 		basis = basis.slerp(target_basis,0.5)
+		if parent.order == index and turn_taken == false:
+			fire_gun()
+			turn_taken = true
+		if parent.order != index:
+			turn_taken = false
+		
+		
 
 			
 		
@@ -29,6 +37,4 @@ func _process(delta):
 		
 
 
-func _on_timer_timeout():
-	if parent.order == index and alert:
-		fire_gun()
+

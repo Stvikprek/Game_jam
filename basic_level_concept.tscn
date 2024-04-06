@@ -286,6 +286,10 @@ index = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0605, 1.45618, -20.7493)
 index = 2
 
+[node name="ENEMY3" parent="." instance=ExtResource("9_7qqq8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6376, 1.45618, -20.7493)
+index = 3
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true

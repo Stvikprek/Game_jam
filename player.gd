@@ -2,19 +2,16 @@ extends Area3D
 
 
 @onready var camera = $Camera3D
-@onready var scopetex= $scope_tex
 @onready var bullet_path = $RayCast3D
 var leaning = false
-#const lean_amount = 0.07
+var health = 10
 const lean_rot  = 40
 var in_lean_rot = false
-var stuck = false
+var stuck = 0
 var moving:bool = false
 
 func _ready():
-	scopetex.visible = false
 	Input.mouse_mode = (Input.MOUSE_MODE_CAPTURED)
-	
 func zoom(value):
 	if camera.fov > value:
 		camera.fov -= 1
@@ -23,16 +20,11 @@ func unzoom():
 		camera.fov += 1
 	else:
 		camera.fov = 75
-		
+func stuck_drop():
+	if stuck > 0:
+		stuck -= 0.001
 func _input(event):
-	if event is InputEventMouseMotion and !stuck:
-		camera.rotate_y(deg_to_rad(-event.relative.x)*0.5)
-		camera.rotate_x(deg_to_rad(-event.relative.y)*0.5)
-		camera.rotation.x = clamp(camera.rotation.x,deg_to_rad(-30),deg_to_rad(30))
-		camera.rotation.y = clamp(camera.rotation.y,deg_to_rad(-30),deg_to_rad(30))
-		camera.rotation.z = 0
-		
-	elif  event is InputEventMouseMotion:
+	if  event is InputEventMouseMotion:
 		rotation += (Vector3(-event.relative.y*0.005,-event.relative.x*0.005,0))
 		rotation.x = clamp(rotation.x,deg_to_rad(-30),deg_to_rad(30))
 		rotation.y = clamp(rotation.y,deg_to_rad(-30),deg_to_rad(30))
@@ -67,24 +59,25 @@ func _process(delta):
 		leaning = false
 
 	if Input.is_action_pressed("Right"):
-		position.x += 0.1
+		position.x += 0.1 - stuck
+		moving = true
+		stuck_drop()
 
 	if Input.is_action_pressed("Left"):
-		position.x -= 0.1
-
+		position.x -= 0.1 - stuck
+		moving = true
+		stuck_drop()
+	if Input.is_action_just_released("Left") or Input.is_action_just_released("Right"):
+		moving = false
+	if moving == false:
+		if stuck <0.1:
+			stuck += 0.002
+		print(stuck)
 	if Input.is_action_just_pressed("Shoot"):
 		if bullet_path.is_colliding():
 			var body = bullet_path.get_collider()
 			if body.collision_layer == 2:
 				body.queue_free()
-	if Input.is_action_pressed("Aim"):
-		scopetex.visible = true
-		stuck = true
-		camera.rotation.x = deg_to_rad(0)
-		camera.rotation.y = deg_to_rad(0)
-	if stuck:
-		zoom(40)
-		
 		
 
 	

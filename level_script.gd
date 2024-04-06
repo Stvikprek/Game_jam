@@ -1,7 +1,7 @@
 extends Node3D
 
 var order = 1
-var max_enemies:int = 2
+var max_enemies:int = 3
 
 func _process(delta):
 	if order > max_enemies + 1:
