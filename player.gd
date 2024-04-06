@@ -72,12 +72,13 @@ func _process(delta):
 	if moving == false:
 		if stuck <0.1:
 			stuck += 0.002
-		print(stuck)
 	if Input.is_action_just_pressed("Shoot"):
 		if bullet_path.is_colliding():
 			var body = bullet_path.get_collider()
 			if body.collision_layer == 2:
 				body.queue_free()
-		
+	
+	if health <= 0 :
+		print("Game Over")
 
 	

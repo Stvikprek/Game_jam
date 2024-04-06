@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ckkhhciv5jwni"]
+[gd_scene load_steps=38 format=3 uid="uid://ckkhhciv5jwni"]
 
 [ext_resource type="Script" path="res://addons/goshapes/base/GoCurve3D.gd" id="1_khpmq"]
 [ext_resource type="Script" path="res://level_script.gd" id="1_vsxvd"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://addons/goshapes/MeshShaper/Shapers/WallBevelShaper.gd" id="7_rhce7"]
 [ext_resource type="PackedScene" uid="uid://c8p7dklq7a0jv" path="res://player.tscn" id="8_rofcw"]
 [ext_resource type="PackedScene" uid="uid://cwyhdgo12afcn" path="res://enemy.tscn" id="9_7qqq8"]
+[ext_resource type="PackedScene" uid="uid://ntbvw573ut66" path="res://hud.tscn" id="11_4ljj1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qjix2"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -197,6 +198,8 @@ data = PackedVector3Array(-4, 0, 4, 21.6447, 0, 3.8538, 21.6447, -1, 3.8538, -4,
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hx16h"]
+
 [node name="lvl" type="Node3D"]
 script = ExtResource("1_vsxvd")
 
@@ -293,5 +296,8 @@ index = 3
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="HUD" parent="." instance=ExtResource("11_4ljj1")]
+material = SubResource("CanvasItemMaterial_hx16h")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

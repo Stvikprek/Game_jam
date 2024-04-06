@@ -10,7 +10,18 @@ var turn_taken = false
 func fire_gun():
 	if bull_path.is_colliding():
 		if bull_path.get_collider().collision_layer == 1:
-			print("Hit",index)
+			if player.moving:
+				var num = randf()
+				if num < 0.7 + player.stuck:
+					player.health -= 1
+				else:
+					print("DODGE!")
+			else:
+				player.health -= 1
+		else:
+			var rand_num = randf()
+			if rand_num > 0.9 - player.stuck*2:
+				player.health -= 0.5
 		if !$AudioStreamPlayer3D.playing:
 			$AudioStreamPlayer3D.stream = shootsound
 			$AudioStreamPlayer3D.play()
