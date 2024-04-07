@@ -27,3 +27,24 @@ collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(0.996078, 0.996078, 0.996078, 1)
 debug_shape_thickness = 5
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CrossHair" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 530.0
+offset_right = 980.0
+offset_bottom = 550.0
+color = Color(1, 0.486275, 0.32549, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

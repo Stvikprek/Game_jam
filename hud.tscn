@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://ntbvw573ut66"]
+
+[ext_resource type="Script" path="res://HUD.gd" id="1_yxxfp"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yxxfp")
+
+[node name="health" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_right = 586.0
+offset_bottom = 102.0
+max_value = 10.0
+
+[node name="RELOAD" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_top = 622.0
+offset_right = 229.0
+offset_bottom = 649.0
+max_value = 0.5

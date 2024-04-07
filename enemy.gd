@@ -4,9 +4,13 @@ extends Area3D
 var alert:bool = 0
 var shootsound = preload("res://explosion.wav")
 @onready var bull_path = $RayCast3D
+@onready var mesh = $HumanoidBase_NotOverlapping # Courtesy of Comp 3 interactive on itch.io
 @export var index:int
 @onready var parent = get_parent()
 var turn_taken = false
+func _ready():
+	mesh.get_active_material(0).next_pass.albedo_color.a = 0.0
+
 func fire_gun():
 	if bull_path.is_colliding():
 		if bull_path.get_collider().collision_layer == 1:
@@ -14,8 +18,6 @@ func fire_gun():
 				var num = randf()
 				if num < 0.7 + player.stuck:
 					player.health -= 1
-				else:
-					print("DODGE!")
 			else:
 				player.health -= 1
 		else:
@@ -25,6 +27,7 @@ func fire_gun():
 		if !$AudioStreamPlayer3D.playing:
 			$AudioStreamPlayer3D.stream = shootsound
 			$AudioStreamPlayer3D.play()
+		
 	
 
 func _process(delta):
@@ -37,15 +40,8 @@ func _process(delta):
 		if parent.order == index and turn_taken == false:
 			fire_gun()
 			turn_taken = true
+			mesh.get_active_material(0).next_pass.albedo_color.a = 0.5
 		if parent.order != index:
 			turn_taken = false
-		
-		
-
-			
-		
-		
-		
-
-
+			mesh.get_active_material(0).next_pass.albedo_color.a = 0.0 #Mesh changin all at once, need fix
 

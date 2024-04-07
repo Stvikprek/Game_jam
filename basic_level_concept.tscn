@@ -197,6 +197,7 @@ data = PackedVector3Array(-4, 0, 4, 21.6447, 0, 3.8538, 21.6447, -1, 3.8538, -4,
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_busjn"]
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.16
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hx16h"]
 
@@ -293,9 +294,12 @@ index = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6376, 1.45618, -20.7493)
 index = 3
 
+[node name="ENEMY4" parent="." instance=ExtResource("9_7qqq8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.23545, 1.45618, -44.266)
+index = 4
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
-autostart = true
 
 [node name="HUD" parent="." instance=ExtResource("11_4ljj1")]
 material = SubResource("CanvasItemMaterial_hx16h")
