@@ -1,6 +1,8 @@
 extends Area3D
 
 @onready var player = get_parent().get_node("player")
+var xray_mesh = preload("res://enemy_xray.tres")
+var no_xray_mesh = preload("res://enemy_no_xray.tres")
 var alert:bool = 0
 var shootsound = preload("res://explosion.wav")
 @onready var bull_path = $RayCast3D
@@ -8,8 +10,6 @@ var shootsound = preload("res://explosion.wav")
 @export var index:int
 @onready var parent = get_parent()
 var turn_taken = false
-func _ready():
-	mesh.get_active_material(0).next_pass.albedo_color.a = 0.0
 
 func fire_gun():
 	if bull_path.is_colliding():
@@ -40,8 +40,8 @@ func _process(delta):
 		if parent.order == index and turn_taken == false:
 			fire_gun()
 			turn_taken = true
-			mesh.get_active_material(0).next_pass.albedo_color.a = 0.5
+			mesh.set_surface_override_material(0,xray_mesh)
 		if parent.order != index:
 			turn_taken = false
-			mesh.get_active_material(0).next_pass.albedo_color.a = 0.0 #Mesh changin all at once, need fix
+			mesh.set_surface_override_material(0,no_xray_mesh)#Mesh changin all at once, need fix
 
