@@ -1,10 +1,12 @@
 extends Area3D
 
-
+var shootsound = preload("res://762x54r Single Isolated WAV.wav")
 @onready var camera = $Camera3D
 @onready var bullet_path = $RayCast3D
+var pain = preload("res://dsplpain.wav")
+var prev_health = 5
 var leaning = false
-var health = 10
+var health = 5
 const lean_rot  = 30
 var in_lean_rot = false
 var stuck = 0
@@ -39,7 +41,10 @@ func _process(delta):
 			rotation.z = deg_to_rad(0)
 			in_lean_rot = false
 		unzoom()
-		
+	if prev_health != health:
+		prev_health = health
+		$AudioStreamPlayer3D.stream = pain
+		$AudioStreamPlayer3D.play()
 	if Input.is_action_pressed("Lean Right"):
 		if rotation.z > deg_to_rad(-lean_rot):
 			rotate_z(deg_to_rad(-lean_rot/20))
@@ -74,8 +79,8 @@ func _process(delta):
 	if Input.is_action_just_released("Left") or Input.is_action_just_released("Right"):
 		moving = false
 	if moving == false:
-		if stuck <0.1:
-			stuck += 0.002
+		if stuck <0.075:
+			stuck += 0.001
 	if Input.is_action_just_pressed("Shoot") and can_shoot:
 		if bullet_path.is_colliding():
 			var body = bullet_path.get_collider()
@@ -83,6 +88,9 @@ func _process(delta):
 				body.queue_free()
 		can_shoot = false
 		$Timer.start()
+		if !$AudioStreamPlayer3D.playing:
+			$AudioStreamPlayer3D.stream = shootsound
+			$AudioStreamPlayer3D.play()
 	if health <= 0 :
 		print("Game Over")
 

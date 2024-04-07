@@ -3,8 +3,9 @@ extends Area3D
 @onready var player = get_parent().get_node("player")
 var xray_mesh = preload("res://enemy_xray.tres")
 var no_xray_mesh = preload("res://enemy_no_xray.tres")
+
 var alert:bool = 0
-var shootsound = preload("res://explosion.wav")
+var shootsound = preload("res://556 Single Isolated WAV.wav") #Credit to Snake's gun sounds
 @onready var bull_path = $RayCast3D
 @onready var mesh = $HumanoidBase_NotOverlapping # Courtesy of Comp 3 interactive on itch.io
 @export var index:int
@@ -16,13 +17,13 @@ func fire_gun():
 		if bull_path.get_collider().collision_layer == 1:
 			if player.moving:
 				var num = randf()
-				if num < 0.7 + player.stuck:
+				if num < 0.6 + player.stuck:
 					player.health -= 1
 			else:
 				player.health -= 1
 		else:
 			var rand_num = randf()
-			if rand_num > 0.9 - player.stuck*2:
+			if rand_num > 0.9 - player.stuck*1.5:
 				player.health -= 0.5
 		if !$AudioStreamPlayer3D.playing:
 			$AudioStreamPlayer3D.stream = shootsound

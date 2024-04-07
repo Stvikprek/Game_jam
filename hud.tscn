@@ -15,7 +15,7 @@ script = ExtResource("1_yxxfp")
 layout_mode = 0
 offset_right = 586.0
 offset_bottom = 102.0
-max_value = 10.0
+max_value = 5.0
 
 [node name="RELOAD" type="ProgressBar" parent="."]
 layout_mode = 0
