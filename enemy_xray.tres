@@ -1,0 +1,25 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://b16gt7wkkaslv"]
+
+[ext_resource type="Texture2D" uid="uid://ct005y6km6ukr" path="res://Base Humanoid Mesh/Humanoid-37007468268c0cbadbbd55e87427f044_NonOverlapping.png" id="1_s3o43"]
+[ext_resource type="Texture2D" uid="uid://uapijrrk12ya" path="res://Base Humanoid Mesh/NonOverlapping.png" id="2_7qkkc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54o0i"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.843137, 0.458824, 0, 0.792157)
+
+[resource]
+resource_name = "Humanoid_NotOverlapping"
+render_priority = 1
+next_pass = SubResource("StandardMaterial3D_54o0i")
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_s3o43")
+metallic = 0.4
+emission_enabled = true
+emission = Color(0.807843, 0, 0.0588235, 1)
+emission_energy_multiplier = 1.57
+emission_operator = 1
+emission_texture = ExtResource("2_7qkkc")
