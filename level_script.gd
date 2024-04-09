@@ -1,7 +1,7 @@
 extends Node3D
 
 var order = 1
-var max_enemies:int = 4
+var max_enemies:int = 6
 @onready var timer = $Timer
 func _process(delta):
 	if order > max_enemies + 1:

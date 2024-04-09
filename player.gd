@@ -3,7 +3,7 @@ extends Area3D
 var shootsound = preload("res://762x54r Single Isolated WAV.wav")
 @onready var camera = $Camera3D
 @onready var bullet_path = $RayCast3D
-var pain = preload("res://dsplpain.wav")
+
 var prev_health = 5
 var leaning = false
 var health = 5
@@ -12,6 +12,8 @@ var in_lean_rot = false
 var stuck = 0
 var moving:bool = false
 var can_shoot:bool = true
+var in_recoil:bool = false
+
 func _ready():
 	Input.mouse_mode = (Input.MOUSE_MODE_CAPTURED)
 func zoom(value):
@@ -26,7 +28,7 @@ func stuck_drop():
 	if stuck > 0:
 		stuck -= 0.001
 func _input(event):
-	if  event is InputEventMouseMotion:
+	if  event is InputEventMouseMotion and !in_recoil:
 		rotation += (Vector3(-event.relative.y*0.005,-event.relative.x*0.005,0))
 		rotation.x = clamp(rotation.x,deg_to_rad(-40),deg_to_rad(40))
 		rotation.y = clamp(rotation.y,deg_to_rad(-40),deg_to_rad(40))
@@ -41,10 +43,6 @@ func _process(delta):
 			rotation.z = deg_to_rad(0)
 			in_lean_rot = false
 		unzoom()
-	if prev_health != health:
-		prev_health = health
-		$AudioStreamPlayer3D.stream = pain
-		$AudioStreamPlayer3D.play()
 	if Input.is_action_pressed("Lean Right"):
 		if rotation.z > deg_to_rad(-lean_rot):
 			rotate_z(deg_to_rad(-lean_rot/20))
@@ -88,11 +86,20 @@ func _process(delta):
 				body.queue_free()
 		can_shoot = false
 		$Timer.start()
+		in_recoil = true
 		if !$AudioStreamPlayer3D.playing:
 			$AudioStreamPlayer3D.stream = shootsound
 			$AudioStreamPlayer3D.play()
+		$CPUParticles3D.emitting = true
 	if health <= 0 :
-		print("Game Over")
+		get_tree().change_scene_to_file("res://main_menu.tscn")
+	if $Timer.time_left <=0.45:
+		$CPUParticles3D.emitting = false
+	elif in_recoil:
+		rotate_x(deg_to_rad(randf()*5))
+	if $Timer.time_left <0.3:
+		in_recoil = false
+	
 
 func _on_timer_timeout():
 	can_shoot = true
