@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://ntbvw573ut66"]
+[gd_scene load_steps=3 format=3 uid="uid://ntbvw573ut66"]
 
 [ext_resource type="Script" path="res://HUD.gd" id="1_yxxfp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_weqth"]
+bg_color = Color(1, 0.341176, 0.309804, 1)
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -15,11 +18,14 @@ script = ExtResource("1_yxxfp")
 layout_mode = 0
 offset_right = 586.0
 offset_bottom = 102.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_weqth")
 max_value = 5.0
+rounded = true
 
 [node name="RELOAD" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_top = 622.0
-offset_right = 229.0
-offset_bottom = 649.0
+offset_left = 960.0
+offset_top = 600.0
+offset_right = 1189.0
+offset_bottom = 627.0
 max_value = 0.5

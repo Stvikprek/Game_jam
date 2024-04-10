@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cwyhdgo12afcn"]
 
-[ext_resource type="Script" path="res://enemy.gd" id="1_gwfei"]
+[ext_resource type="Script" path="res://moving_enemy.gd" id="1_dmt4s"]
 [ext_resource type="Material" uid="uid://cajvqvaxw88l4" path="res://enemy_no_xray.tres" id="2_371s7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ruvfv"]
@@ -48,7 +48,7 @@ shadow_mesh = SubResource("ArrayMesh_lbnaw")
 
 [node name="ENEMY" type="Area3D"]
 collision_layer = 2
-script = ExtResource("1_gwfei")
+script = ExtResource("1_dmt4s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905878, 0)

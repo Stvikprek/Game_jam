@@ -4,4 +4,8 @@ extends Control
 @onready var reload_time = $RELOAD
 func _process(delta):
 	health.value = player.health
-	reload_time.value = (player.get_node("Timer").time_left)
+	if player.get_node("Timer").time_left != 0 :
+		reload_time.visible = true
+		reload_time.value = player.get_node("Timer").time_left
+	else:
+		reload_time.visible = false 

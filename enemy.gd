@@ -3,7 +3,7 @@ extends Area3D
 @onready var player = get_parent().get_node("player")
 var xray_mesh = preload("res://enemy_xray.tres")
 var no_xray_mesh = preload("res://enemy_no_xray.tres")
-
+var xray_mesh_red = preload("res://enemy_xray_red.tres")
 var alert:bool = 0
 var shootsound = preload("res://556 Single Isolated WAV.wav") #Credit to Snake's gun sounds
 @onready var bull_path = $RayCast3D
@@ -23,7 +23,7 @@ func fire_gun():
 				player.health -= 1
 		else:
 			var rand_num = randf()
-			if rand_num > 0.9 - player.stuck*1.5:
+			if rand_num > 0.85 - player.stuck*1.5:
 				player.health -= 0.5
 		if !$AudioStreamPlayer3D.playing:
 			$AudioStreamPlayer3D.stream = shootsound
@@ -34,6 +34,11 @@ func fire_gun():
 func _process(delta):
 	if Input.is_action_just_pressed("Shoot"):
 		alert = 1
+	if !alert:
+		if parent.order == index:
+			mesh.set_surface_override_material(0,xray_mesh) # To determine order
+		else:
+			mesh.set_surface_override_material(0,no_xray_mesh)
 	if (alert):
 		var target_vec = global_position.direction_to(player.position)
 		var target_basis = Basis.looking_at(target_vec)
@@ -41,8 +46,7 @@ func _process(delta):
 		if parent.order == index and turn_taken == false:
 			fire_gun()
 			turn_taken = true
-			mesh.set_surface_override_material(0,xray_mesh)
+			mesh.set_surface_override_material(0,xray_mesh_red) #Actually shooting at you, dont forget to push
 		if parent.order != index:
 			turn_taken = false
-			mesh.set_surface_override_material(0,no_xray_mesh)#Mesh changin all at once, need fix
-
+			mesh.set_surface_override_material(0,no_xray_mesh)

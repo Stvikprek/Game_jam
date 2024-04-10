@@ -244,8 +244,8 @@ grow_vertical = 2
 layout_mode = 0
 offset_left = 960.0
 offset_top = 530.0
-offset_right = 980.0
-offset_bottom = 550.0
+offset_right = 970.0
+offset_bottom = 540.0
 color = Color(1, 0.486275, 0.32549, 1)
 
 [node name="Timer" type="Timer" parent="."]

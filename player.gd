@@ -1,6 +1,7 @@
 extends Area3D
 
 var shootsound = preload("res://762x54r Single Isolated WAV.wav")
+
 @onready var camera = $Camera3D
 @onready var bullet_path = $RayCast3D
 
@@ -84,6 +85,7 @@ func _process(delta):
 			var body = bullet_path.get_collider()
 			if body.collision_layer == 2:
 				body.queue_free()
+				get_parent().count -= 1
 		can_shoot = false
 		$Timer.start()
 		in_recoil = true
@@ -96,11 +98,13 @@ func _process(delta):
 	if $Timer.time_left <=0.45:
 		$CPUParticles3D.emitting = false
 	elif in_recoil:
-		rotate_x(deg_to_rad(randf()*5))
+		rotation += Vector3(deg_to_rad(randf()*5),0,0)
 	if $Timer.time_left <0.3:
 		in_recoil = false
-	
 
 func _on_timer_timeout():
 	can_shoot = true
 	$Timer.stop()
+
+
+
