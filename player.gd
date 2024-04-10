@@ -17,6 +17,10 @@ var in_recoil:bool = false
 
 func _ready():
 	Input.mouse_mode = (Input.MOUSE_MODE_CAPTURED)
+	if get_tree().current_scene.name == "lvl1":
+		$AMBIENT.light_energy = 0.5
+	elif get_tree().current_scene.name == "lvl2":
+		$AMBIENT.light_energy = 0.2
 func zoom(value):
 	if camera.fov > value:
 		camera.fov -= 1

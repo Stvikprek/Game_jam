@@ -24,10 +24,12 @@ ground_horizon_color = Color(0.5, 0.5, 0.5, 1)
 sky_material = SubResource("ProceduralSkyMaterial_qjix2")
 
 [sub_resource type="Environment" id="Environment_3y2d3"]
-background_mode = 2
+background_mode = 5
 sky = SubResource("Sky_u0kgp")
-tonemap_mode = 2
+tonemap_mode = 3
 glow_enabled = true
+fog_light_color = Color(0.992157, 0.184314, 0, 1)
+fog_light_energy = 0.05
 
 [sub_resource type="Curve3D" id="Curve3D_m1u18"]
 _data = {
@@ -195,7 +197,6 @@ _surfaces = [{
 data = PackedVector3Array(-4, 0, 4, 21.6447, 0, 3.8538, 21.6447, -1, 3.8538, -4, -1, 4, -4, 0, 4, 21.6447, -1, 3.8538, 21.6447, 0, 3.8538, 21.3967, 0, -3.7716, 21.3967, -1, -3.7716, 21.6447, -1, 3.8538, 21.6447, 0, 3.8538, 21.3967, -1, -3.7716, 21.3967, 0, -3.7716, -4, 0, -4, -4, -1, -4, 21.3967, -1, -3.7716, 21.3967, 0, -3.7716, -4, -1, -4, -4, 0, -4, -4, 0, 4, -4, -1, 4, -4, -1, -4, -4, 0, -4, -4, -1, 4)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_busjn"]
-emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 0.16
 

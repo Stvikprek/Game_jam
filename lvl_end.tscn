@@ -1,20 +1,18 @@
-[gd_scene load_steps=39 format=3 uid="uid://bgd7qfu6uejvw"]
+[gd_scene load_steps=37 format=3 uid="uid://dbk50iwjhhg00"]
 
-[ext_resource type="Script" path="res://lvl3.gd" id="1_g8wsc"]
-[ext_resource type="Script" path="res://addons/goshapes/base/GoCurve3D.gd" id="2_5uj5i"]
-[ext_resource type="Script" path="res://addons/goshapes/Goshape.gd" id="3_depqh"]
-[ext_resource type="Script" path="res://addons/goshapes/base/PathOptions.gd" id="4_3gw8j"]
-[ext_resource type="Script" path="res://addons/goshapes/MeshShaper/Shapers/BottomShaper.gd" id="5_jllfu"]
-[ext_resource type="Script" path="res://addons/goshapes/MeshShaper/Shapers/CapFlatShaper.gd" id="6_mib0a"]
-[ext_resource type="Script" path="res://addons/goshapes/MeshShaper/BlockShaper.gd" id="7_iq6nq"]
-[ext_resource type="Script" path="res://addons/goshapes/MeshShaper/Shapers/WallBevelShaper.gd" id="8_wullo"]
-[ext_resource type="PackedScene" uid="uid://c8p7dklq7a0jv" path="res://player.tscn" id="9_2jw1c"]
-[ext_resource type="PackedScene" uid="uid://cwyhdgo12afcn" path="res://enemy.tscn" id="10_6djgo"]
-[ext_resource type="PackedScene" uid="uid://ntbvw573ut66" path="res://hud.tscn" id="11_8tf11"]
-[ext_resource type="Script" path="res://enemy.gd" id="11_rjunl"]
+[ext_resource type="Script" path="res://lvl_end.gd" id="1_3ct2t"]
+[ext_resource type="Script" path="res://addons/goshapes/base/GoCurve3D.gd" id="2_1ph0r"]
+[ext_resource type="Script" path="res://addons/goshapes/Goshape.gd" id="3_dkwhk"]
+[ext_resource type="Script" path="res://addons/goshapes/base/PathOptions.gd" id="4_mrhwh"]
+[ext_resource type="Script" path="res://addons/goshapes/MeshShaper/Shapers/BottomShaper.gd" id="5_e35aa"]
+[ext_resource type="Script" path="res://addons/goshapes/MeshShaper/Shapers/CapFlatShaper.gd" id="6_kiwa3"]
+[ext_resource type="Script" path="res://addons/goshapes/MeshShaper/BlockShaper.gd" id="7_bl05y"]
+[ext_resource type="Script" path="res://addons/goshapes/MeshShaper/Shapers/WallBevelShaper.gd" id="8_4ehln"]
+[ext_resource type="PackedScene" uid="uid://c8p7dklq7a0jv" path="res://player.tscn" id="9_aof00"]
+[ext_resource type="PackedScene" uid="uid://ntbvw573ut66" path="res://hud.tscn" id="12_i5gep"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qjix2"]
-sky_top_color = Color(0, 0, 0, 1)
+sky_top_color = Color(0.266667, 0.0431373, 0, 1)
 sky_horizon_color = Color(0.5, 0.5, 0.5, 1)
 sky_energy_multiplier = 0.0
 ground_bottom_color = Color(0, 0, 0, 1)
@@ -26,22 +24,25 @@ sky_material = SubResource("ProceduralSkyMaterial_qjix2")
 [sub_resource type="Environment" id="Environment_3y2d3"]
 background_mode = 2
 sky = SubResource("Sky_u0kgp")
+ambient_light_source = 3
+ambient_light_color = Color(0.356863, 0.0980392, 0, 1)
 tonemap_mode = 2
+tonemap_exposure = 0.66
 glow_enabled = true
 fog_enabled = true
-fog_light_color = Color(0.372549, 0, 0.027451, 1)
-fog_light_energy = 0.2
+fog_light_color = Color(0.905882, 0.301961, 0.160784, 1)
+fog_light_energy = 0.33
 
-[sub_resource type="Curve3D" id="Curve3D_m1u18"]
+[sub_resource type="Curve3D" id="Curve3D_pcskh"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4, 0, 4, 0, 0, 0, 0, 0, 0, 21.6447, 0, 3.85381, 0, 0, 0, 0, 0, 0, 21.3967, 0, -3.77155, 0, 0, 0, 0, 0, 0, -4, 0, -4),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
-script = ExtResource("2_5uj5i")
+script = ExtResource("2_1ph0r")
 
-[sub_resource type="Resource" id="Resource_dwb33"]
-script = ExtResource("4_3gw8j")
+[sub_resource type="Resource" id="Resource_qdc6f"]
+script = ExtResource("4_mrhwh")
 flatten = true
 twist = false
 line = 0.0
@@ -51,20 +52,20 @@ points_on_ground = false
 offset_y = 0.0
 ground_placement_mask = 0
 
-[sub_resource type="Resource" id="Resource_i8jlt"]
-script = ExtResource("5_jllfu")
+[sub_resource type="Resource" id="Resource_j3738"]
+script = ExtResource("5_e35aa")
 base_depth = 1.0
 enabled = false
 
-[sub_resource type="Resource" id="Resource_0ue08"]
-script = ExtResource("6_mib0a")
+[sub_resource type="Resource" id="Resource_gtdwx"]
+script = ExtResource("6_kiwa3")
 conform_to_wall = false
 build_collider = true
 collision_layer = 1
 enabled = true
 
-[sub_resource type="Resource" id="Resource_613ir"]
-script = ExtResource("8_wullo")
+[sub_resource type="Resource" id="Resource_qbpv1"]
+script = ExtResource("8_4ehln")
 height = 1.0
 bevel = 0.0
 taper = 0.0
@@ -72,17 +73,17 @@ build_collider = true
 collision_layer = 1
 enabled = true
 
-[sub_resource type="Resource" id="Resource_dg0v5"]
-script = ExtResource("7_iq6nq")
-cap_shaper = SubResource("Resource_0ue08")
-wall_shaper = SubResource("Resource_613ir")
-bottom_shaper = SubResource("Resource_i8jlt")
+[sub_resource type="Resource" id="Resource_j2p5o"]
+script = ExtResource("7_bl05y")
+cap_shaper = SubResource("Resource_gtdwx")
+wall_shaper = SubResource("Resource_qbpv1")
+bottom_shaper = SubResource("Resource_j3738")
 bottom_depth = 0.0
 collider_type = 2
 collider_ridge = 0.0
 enabled = true
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ol257"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_0ydsu"]
 _surfaces = [{
 "aabb": AABB(-4, 0, -4, 25.6447, 1e-05, 8.00001),
 "attribute_data": PackedByteArray(0, 0, 128, 192, 0, 0, 128, 64, 88, 40, 173, 65, 211, 164, 118, 64, 113, 44, 171, 65, 19, 97, 113, 192, 0, 0, 128, 192, 0, 0, 128, 192),
@@ -94,10 +95,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray(0, 0, 128, 192, 0, 0, 0, 0, 0, 0, 128, 64, 255, 127, 255, 255, 88, 40, 173, 65, 0, 0, 0, 0, 211, 164, 118, 64, 255, 127, 255, 255, 113, 44, 171, 65, 0, 0, 0, 0, 19, 97, 113, 192, 255, 127, 255, 255, 0, 0, 128, 192, 0, 0, 0, 0, 0, 0, 128, 192, 255, 127, 255, 255)
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_twsc4"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6yboq"]
 data = PackedVector3Array(-4, 0, 4, -4, 0, -4, 21.3967, 0, -3.7716, 21.3967, 0, -3.7716, 21.6447, 0, 3.8538, -4, 0, 4)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_soxex"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_wnpnw"]
 _surfaces = [{
 "aabb": AABB(-4, -1, -4, 25.6447, 1.00001, 8.00001),
 "attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 50, 41, 205, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 50, 41, 205, 65, 0, 0, 128, 191, 50, 41, 205, 65, 0, 0, 0, 0, 24, 25, 5, 66, 0, 0, 0, 0, 50, 41, 205, 65, 0, 0, 128, 191, 24, 25, 5, 66, 0, 0, 128, 191, 24, 25, 5, 66, 0, 0, 0, 0, 94, 176, 106, 66, 0, 0, 0, 0, 24, 25, 5, 66, 0, 0, 128, 191, 94, 176, 106, 66, 0, 0, 128, 191, 94, 176, 106, 66, 0, 0, 0, 0, 47, 88, 133, 66, 0, 0, 0, 0, 94, 176, 106, 66, 0, 0, 128, 191, 47, 88, 133, 66, 0, 0, 128, 191),
@@ -109,7 +110,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray(0, 0, 128, 192, 0, 0, 0, 0, 0, 0, 128, 64, 185, 128, 255, 127, 88, 40, 173, 65, 0, 0, 0, 0, 211, 164, 118, 64, 185, 128, 255, 127, 0, 0, 128, 192, 0, 0, 128, 191, 0, 0, 128, 64, 185, 128, 255, 127, 88, 40, 173, 65, 0, 0, 128, 191, 211, 164, 118, 64, 185, 128, 255, 127, 88, 40, 173, 65, 0, 0, 0, 0, 211, 164, 118, 64, 255, 255, 7, 132, 113, 44, 171, 65, 0, 0, 0, 0, 19, 97, 113, 192, 255, 255, 7, 132, 88, 40, 173, 65, 0, 0, 128, 191, 211, 164, 118, 64, 255, 255, 7, 132, 113, 44, 171, 65, 0, 0, 128, 191, 19, 97, 113, 192, 255, 255, 7, 132, 113, 44, 171, 65, 0, 0, 0, 0, 19, 97, 113, 192, 255, 255, 218, 254, 0, 0, 128, 192, 0, 0, 0, 0, 0, 0, 128, 192, 255, 255, 218, 254, 113, 44, 171, 65, 0, 0, 128, 191, 19, 97, 113, 192, 255, 255, 218, 254, 0, 0, 128, 192, 0, 0, 128, 191, 0, 0, 128, 192, 255, 255, 218, 254, 0, 0, 128, 192, 0, 0, 0, 0, 0, 0, 128, 192, 0, 0, 255, 127, 0, 0, 128, 192, 0, 0, 0, 0, 0, 0, 128, 64, 0, 0, 255, 127, 0, 0, 128, 192, 0, 0, 128, 191, 0, 0, 128, 192, 0, 0, 255, 127, 0, 0, 128, 192, 0, 0, 128, 191, 0, 0, 128, 64, 0, 0, 255, 127)
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yhp75"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rnm8u"]
 data = PackedVector3Array(-4, 0, 4, 21.6447, 0, 3.8538, 21.6447, -1, 3.8538, -4, -1, 4, -4, 0, 4, 21.6447, -1, 3.8538, 21.6447, 0, 3.8538, 21.3967, 0, -3.7716, 21.3967, -1, -3.7716, 21.6447, -1, 3.8538, 21.6447, 0, 3.8538, 21.3967, -1, -3.7716, 21.3967, 0, -3.7716, -4, 0, -4, -4, -1, -4, 21.3967, -1, -3.7716, 21.3967, 0, -3.7716, -4, -1, -4, -4, 0, -4, -4, 0, 4, -4, -1, 4, -4, -1, -4, -4, 0, -4, -4, -1, 4)
 
 [sub_resource type="Curve3D" id="Curve3D_nagmx"]
@@ -118,10 +119,10 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
-script = ExtResource("2_5uj5i")
+script = ExtResource("2_1ph0r")
 
 [sub_resource type="Resource" id="Resource_4qerl"]
-script = ExtResource("4_3gw8j")
+script = ExtResource("4_mrhwh")
 flatten = true
 twist = false
 line = 0.0
@@ -132,7 +133,7 @@ offset_y = 0.0
 ground_placement_mask = 0
 
 [sub_resource type="Resource" id="Resource_v03jf"]
-script = ExtResource("5_jllfu")
+script = ExtResource("5_e35aa")
 base_depth = 1.0
 enabled = false
 
@@ -140,7 +141,7 @@ enabled = false
 emission = Color(1, 1, 1, 1)
 
 [sub_resource type="Resource" id="Resource_yavcm"]
-script = ExtResource("6_mib0a")
+script = ExtResource("6_kiwa3")
 conform_to_wall = false
 material = SubResource("StandardMaterial3D_4oytf")
 build_collider = true
@@ -148,7 +149,7 @@ collision_layer = 1
 enabled = true
 
 [sub_resource type="Resource" id="Resource_tc3o4"]
-script = ExtResource("8_wullo")
+script = ExtResource("8_4ehln")
 height = 1.0
 bevel = 0.0
 taper = 0.0
@@ -157,7 +158,7 @@ collision_layer = 1
 enabled = true
 
 [sub_resource type="Resource" id="Resource_hsr31"]
-script = ExtResource("7_iq6nq")
+script = ExtResource("7_bl05y")
 cap_shaper = SubResource("Resource_yavcm")
 wall_shaper = SubResource("Resource_tc3o4")
 bottom_shaper = SubResource("Resource_v03jf")
@@ -204,37 +205,38 @@ emission_energy_multiplier = 0.16
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hx16h"]
 
 [node name="lvl" type="Node3D"]
-script = ExtResource("1_g8wsc")
+script = ExtResource("1_3ct2t")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3y2d3")
 
 [node name="Goshape" type="Path3D" parent="."]
-curve = SubResource("Curve3D_m1u18")
-script = ExtResource("3_depqh")
-path_options = SubResource("Resource_dwb33")
-shaper = SubResource("Resource_dg0v5")
+transform = Transform3D(-0.998767, 0, 0.0496342, 0, 1, 0, -0.0496342, 0, -0.998767, 6.37727, 0, -54.3601)
+curve = SubResource("Curve3D_pcskh")
+script = ExtResource("3_dkwhk")
+path_options = SubResource("Resource_qdc6f")
+shaper = SubResource("Resource_j2p5o")
 
 [node name="Mesh0" type="MeshInstance3D" parent="Goshape"]
-mesh = SubResource("ArrayMesh_ol257")
+mesh = SubResource("ArrayMesh_0ydsu")
 
 [node name="Collider1" type="StaticBody3D" parent="Goshape"]
 
 [node name="CollisionShape" type="CollisionShape3D" parent="Goshape/Collider1"]
-shape = SubResource("ConcavePolygonShape3D_twsc4")
+shape = SubResource("ConcavePolygonShape3D_6yboq")
 
 [node name="Mesh2" type="MeshInstance3D" parent="Goshape"]
-mesh = SubResource("ArrayMesh_soxex")
+mesh = SubResource("ArrayMesh_wnpnw")
 
 [node name="Collider3" type="StaticBody3D" parent="Goshape"]
 
 [node name="CollisionShape" type="CollisionShape3D" parent="Goshape/Collider3"]
-shape = SubResource("ConcavePolygonShape3D_yhp75")
+shape = SubResource("ConcavePolygonShape3D_rnm8u")
 
 [node name="Goshape2" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 3.97334, 0)
+transform = Transform3D(-0.998767, -4.33916e-09, -0.0496342, 0, -1, 8.74228e-08, -0.0496342, 8.7315e-08, 0.998767, 6.37727, 3.97334, -54.3601)
 curve = SubResource("Curve3D_nagmx")
-script = ExtResource("3_depqh")
+script = ExtResource("3_dkwhk")
 path_options = SubResource("Resource_4qerl")
 shaper = SubResource("Resource_hsr31")
 
@@ -255,7 +257,7 @@ mesh = SubResource("ArrayMesh_s04t0")
 shape = SubResource("ConcavePolygonShape3D_6ckjn")
 
 [node name="wall" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.46237, 1.29831, -4.40701)
+transform = Transform3D(-0.998767, 0, 0.0496342, 0, 1, 0, -0.0496342, 0, -0.998767, -3.29217, 1.29831, -50.4282)
 use_collision = true
 collision_layer = 4
 size = Vector3(29.7086, 7.01467, 1)
@@ -281,68 +283,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.62857, 0.59, 0)
 operation = 2
 size = Vector3(2.31458, 2.51474, 1)
 
-[node name="player" parent="." instance=ExtResource("9_2jw1c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78914, 1.55972, -0.741971)
-
-[node name="ENEMY" parent="." instance=ExtResource("10_6djgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.78119, 1.45618, -20.7493)
-script = ExtResource("11_rjunl")
-index = 1
-
-[node name="ENEMY2" parent="." instance=ExtResource("10_6djgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0605, 1.45618, -20.7493)
-script = ExtResource("11_rjunl")
-index = 2
-
-[node name="ENEMY3" parent="." instance=ExtResource("10_6djgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6376, 1.45618, -20.7493)
-script = ExtResource("11_rjunl")
-index = 3
-
-[node name="ENEMY4" parent="." instance=ExtResource("10_6djgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.23545, -3.94329, -44.266)
-script = ExtResource("11_rjunl")
-index = 4
-
-[node name="ENEMY5" parent="." instance=ExtResource("10_6djgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.428, 3.43204, -36.9027)
-move_amnt = 0.08
-index = 5
+[node name="player" parent="." instance=ExtResource("9_aof00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60607, -0.221601, 36.7479)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 7.0
 autostart = true
 
-[node name="HUD" parent="." instance=ExtResource("11_8tf11")]
+[node name="HUD" parent="." instance=ExtResource("12_i5gep")]
 material = SubResource("CanvasItemMaterial_hx16h")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 6.79188, 0, 0, 0, 1, -4.78119, -5.63156, -20.7493)
-size = Vector3(4.10429, 2.12194, 2.72962)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60607, -10.3891, 36.7479)
+size = Vector3(7.37613, 16.908, 8.0538)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 6.79188, 0, 0, 0, 1, 10.0605, -5.93746, -20.7493)
-size = Vector3(5.77146, 2.12194, 1.86096)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 6.79188, 0, 0, 0, 1, 23.6294, -8.19303, -20.7345)
-size = Vector3(3.11533, 2.81225, 2.65231)
-
-[node name="ENEMY6" parent="." instance=ExtResource("10_6djgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.4589, 1.45618, -22.1309)
-move_amnt = 0.05
-index = 6
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 6.79188, 0, 0, 0, 1, 30.4507, -8.19303, -22.1161)
-size = Vector3(3.11533, 2.81225, 2.65231)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 6.79188, 0, 0, 0, 1, 5.23545, -12.0678, -44.266)
-size = Vector3(2.36915, 2.38496, 1.41486)
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 6.79188, 0, 0, 0, 1, 14.428, -16.8069, -36.9027)
-size = Vector3(5.53438, 5.96636, 2.11028)
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -57.2456)
+volume_db = 4.324
+unit_size = 31.6
+max_db = 6.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

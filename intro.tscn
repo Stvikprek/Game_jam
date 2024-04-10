@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6meg1rw370jr"]
+
+[ext_resource type="FontFile" uid="uid://clt4uop4tx4ex" path="res://rubber-biscuit.bold.ttf" id="1_ov60v"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(955, 539)
+zoom = Vector2(0.6, 0.6)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -496.0
+offset_right = 960.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_ov60v")
+theme_override_fonts/bold_font = ExtResource("1_ov60v")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]YOU AWAKEN IN An ENDLESS VOID. YOU DO NOT REMEMBER A THING, except that you should be dead, an angelic voice speaks to you:[/center]"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = 110.0
+offset_right = 960.0
+offset_bottom = 710.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_ov60v")
+theme_override_fonts/bold_font = ExtResource("1_ov60v")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]\"I give you another chance at life, quell the riots and be set free. Don't hesitate,[color=red] they are sinners too[/color]\"[/center]"

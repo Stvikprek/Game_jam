@@ -7,10 +7,15 @@ var xray_mesh_red = preload("res://enemy_xray_red.tres")
 var alert:bool = 0
 var shootsound = preload("res://556 Single Isolated WAV.wav") #Credit to Snake's gun sounds
 @onready var bull_path = $RayCast3D
-@onready var mesh = $HumanoidBase_NotOverlapping # Courtesy of Comp 3 interactive on itch.io
+@onready var mesh = $HumanoidBase_Overlapping # Courtesy of Comp 3 interactive on itch.io
 @export var index:int
 @onready var parent = get_parent()
 var turn_taken = false
+
+func _ready():
+	if get_tree().current_scene.name == "lvl3":
+		mesh.emission_enabled = false
+		$Body.emission_enabled = false
 
 func fire_gun():
 	if bull_path.is_colliding():
@@ -37,8 +42,14 @@ func _process(delta):
 	if !alert:
 		if parent.order == index:
 			mesh.set_surface_override_material(0,xray_mesh) # To determine order
+			$Body.set_surface_override_material(0,xray_mesh)
+			$Body/Scope.set_surface_override_material(0,xray_mesh)
+			$Body/Upper_Body.set_surface_override_material(0,xray_mesh)
 		else:
 			mesh.set_surface_override_material(0,no_xray_mesh)
+			$Body.set_surface_override_material(0,no_xray_mesh)
+			$Body/Scope.set_surface_override_material(0,no_xray_mesh)
+			$Body/Upper_Body.set_surface_override_material(0,no_xray_mesh)
 	if (alert):
 		var target_vec = global_position.direction_to(player.position)
 		var target_basis = Basis.looking_at(target_vec)
@@ -47,6 +58,12 @@ func _process(delta):
 			fire_gun()
 			turn_taken = true
 			mesh.set_surface_override_material(0,xray_mesh_red) #Actually shooting at you, dont forget to push
+			$Body.set_surface_override_material(0,xray_mesh_red)
+			$Body/Scope.set_surface_override_material(0,xray_mesh_red)
+			$Body/Upper_Body.set_surface_override_material(0,xray_mesh_red)
 		if parent.order != index:
 			turn_taken = false
 			mesh.set_surface_override_material(0,no_xray_mesh)
+			$Body.set_surface_override_material(0,no_xray_mesh)
+			$Body/Scope.set_surface_override_material(0,no_xray_mesh)
+			$Body/Upper_Body.set_surface_override_material(0,no_xray_mesh)
