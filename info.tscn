@@ -1,0 +1,116 @@
+[gd_scene load_steps=3 format=3 uid="uid://crgc8htynwlcd"]
+
+[ext_resource type="Script" path="res://info.gd" id="1_v7y2l"]
+[ext_resource type="FontFile" uid="uid://clt4uop4tx4ex" path="res://rubber-biscuit.bold.ttf" id="2_sdx52"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_v7y2l")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(955, 539)
+zoom = Vector2(0.6, 0.6)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -959.0
+offset_top = -703.0
+offset_right = 961.0
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_sdx52")
+theme_override_fonts/bold_font = ExtResource("2_sdx52")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Enemies glow [color=orange]orange[/color] when not alerted and [color=red]red[/color] when on alert. Observe the order in which they glow, as this is the order in which they shoot at you.[/center]"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -959.0
+offset_top = -319.0
+offset_right = 961.0
+offset_bottom = 281.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_sdx52")
+theme_override_fonts/bold_font = ExtResource("2_sdx52")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Enemies are only alerted after your first shot. Use this to scope out the field[/center]"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -959.0
+offset_top = -34.0
+offset_right = 961.0
+offset_bottom = 566.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_sdx52")
+theme_override_fonts/bold_font = ExtResource("2_sdx52")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Moving reduces chances of being hit. Staying still for too long increases chances of being hit through cover[/center]"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -959.0
+offset_top = 266.0
+offset_right = 961.0
+offset_bottom = 866.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_sdx52")
+theme_override_fonts/bold_font = ExtResource("2_sdx52")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Press Q and E to lean left and right and also zoom in a bit.[/center]"
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -959.0
+offset_top = 518.0
+offset_right = 961.0
+offset_bottom = 1118.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_sdx52")
+theme_override_fonts/bold_font = ExtResource("2_sdx52")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Keep a eye on your health in the top-right[/center]"

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpgmq6gimfv4x"]
+[gd_scene load_steps=3 format=3 uid="uid://bpgmq6gimfv4x"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_20r5b"]
+[ext_resource type="FontFile" uid="uid://bc1f77rdnfks2" path="res://MetalGothicDemoVersionRegular-WyB9A.ttf" id="2_p05im"]
 
 [node name="MAIN MENU" type="Control"]
 layout_mode = 3
@@ -15,10 +16,14 @@ script = ExtResource("1_20r5b")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 760.0
-offset_top = 75.0
-offset_right = 1140.0
-offset_bottom = 115.0
+offset_left = 261.0
+offset_top = 107.0
+offset_right = 761.0
+offset_bottom = 707.0
+theme_override_fonts/normal_font = ExtResource("2_p05im")
+theme_override_font_sizes/normal_font_size = 200
+bbcode_enabled = true
+text = "HELL's RIOTS"
 
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 1
@@ -27,12 +32,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -20.0
-offset_right = 100.0
-offset_bottom = 20.0
+offset_left = -1040.0
+offset_top = -148.0
+offset_right = -840.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_p05im")
+theme_override_font_sizes/font_size = 40
 action_mode = 0
 text = "PLAY"
 
@@ -43,12 +50,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 110.0
-offset_right = 100.0
-offset_bottom = 150.0
+offset_left = -1040.0
+offset_top = -18.0
+offset_right = -840.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_p05im")
+theme_override_font_sizes/font_size = 40
 action_mode = 0
 text = "QUIT
 "
@@ -60,16 +69,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 45.0
-offset_right = 100.0
-offset_bottom = 85.0
+offset_left = -1040.0
+offset_top = -83.0
+offset_right = -840.0
+offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_p05im")
+theme_override_font_sizes/font_size = 40
 action_mode = 0
-text = "INFO"
+text = "TUTORIAL"
 
 [connection signal="button_up" from="PlayButton" to="." method="_on_link_button_button_up"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_link_button_pressed"]
 [connection signal="button_up" from="QUIT" to="." method="_on_quit_button_up"]
-[connection signal="button_up" from="INFO" to="." method="_on_quit_button_up"]
+[connection signal="button_up" from="INFO" to="." method="_on_info_button_up"]

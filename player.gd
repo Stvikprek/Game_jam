@@ -98,14 +98,14 @@ func _process(delta):
 			$AudioStreamPlayer3D.play()
 		$CPUParticles3D.emitting = true
 	if health <= 0 :
-		get_tree().change_scene_to_file("res://main_menu.tscn")
+		get_tree().change_scene_to_file("res://intro.tscn")
 	if $Timer.time_left <=0.45:
 		$CPUParticles3D.emitting = false
 	elif in_recoil:
 		rotation += Vector3(deg_to_rad(randf()*5),0,0)
 	if $Timer.time_left <0.3:
 		in_recoil = false
-
+	position.x = clamp(position.x,-3.431,20.129)
 func _on_timer_timeout():
 	can_shoot = true
 	$Timer.stop()

@@ -290,6 +290,7 @@ light_energy = 0.2
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0860165, 0.552767, -1.9234)
+emitting = false
 amount = 20
 lifetime = 0.2
 explosiveness = 1.0

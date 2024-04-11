@@ -1,7 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://dbk50iwjhhg00"]
+[gd_scene load_steps=33 format=3 uid="uid://dbk50iwjhhg00"]
 
 [ext_resource type="Script" path="res://lvl_end.gd" id="1_3ct2t"]
 [ext_resource type="Script" path="res://addons/goshapes/base/GoCurve3D.gd" id="2_1ph0r"]
+[ext_resource type="Environment" uid="uid://ddpgtuookq4a1" path="res://end_env.tres" id="2_vb63l"]
 [ext_resource type="Script" path="res://addons/goshapes/Goshape.gd" id="3_dkwhk"]
 [ext_resource type="Script" path="res://addons/goshapes/base/PathOptions.gd" id="4_mrhwh"]
 [ext_resource type="Script" path="res://addons/goshapes/MeshShaper/Shapers/BottomShaper.gd" id="5_e35aa"]
@@ -9,29 +10,6 @@
 [ext_resource type="Script" path="res://addons/goshapes/MeshShaper/BlockShaper.gd" id="7_bl05y"]
 [ext_resource type="Script" path="res://addons/goshapes/MeshShaper/Shapers/WallBevelShaper.gd" id="8_4ehln"]
 [ext_resource type="PackedScene" uid="uid://c8p7dklq7a0jv" path="res://player.tscn" id="9_aof00"]
-[ext_resource type="PackedScene" uid="uid://ntbvw573ut66" path="res://hud.tscn" id="12_i5gep"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qjix2"]
-sky_top_color = Color(0.266667, 0.0431373, 0, 1)
-sky_horizon_color = Color(0.5, 0.5, 0.5, 1)
-sky_energy_multiplier = 0.0
-ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0.5, 0.5, 0.5, 1)
-
-[sub_resource type="Sky" id="Sky_u0kgp"]
-sky_material = SubResource("ProceduralSkyMaterial_qjix2")
-
-[sub_resource type="Environment" id="Environment_3y2d3"]
-background_mode = 2
-sky = SubResource("Sky_u0kgp")
-ambient_light_source = 3
-ambient_light_color = Color(0.356863, 0.0980392, 0, 1)
-tonemap_mode = 2
-tonemap_exposure = 0.66
-glow_enabled = true
-fog_enabled = true
-fog_light_color = Color(0.905882, 0.301961, 0.160784, 1)
-fog_light_energy = 0.33
 
 [sub_resource type="Curve3D" id="Curve3D_pcskh"]
 _data = {
@@ -202,13 +180,11 @@ data = PackedVector3Array(-4, 0, 4, 21.6447, 0, 3.8538, 21.6447, -1, 3.8538, -4,
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 0.16
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hx16h"]
-
 [node name="lvl" type="Node3D"]
 script = ExtResource("1_3ct2t")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_3y2d3")
+environment = ExtResource("2_vb63l")
 
 [node name="Goshape" type="Path3D" parent="."]
 transform = Transform3D(-0.998767, 0, 0.0496342, 0, 1, 0, -0.0496342, 0, -0.998767, 6.37727, 0, -54.3601)
@@ -285,13 +261,11 @@ size = Vector3(2.31458, 2.51474, 1)
 
 [node name="player" parent="." instance=ExtResource("9_aof00")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60607, -0.221601, 36.7479)
+script = null
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 7.0
 autostart = true
-
-[node name="HUD" parent="." instance=ExtResource("12_i5gep")]
-material = SubResource("CanvasItemMaterial_hx16h")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60607, -10.3891, 36.7479)
@@ -299,8 +273,9 @@ size = Vector3(7.37613, 16.908, 8.0538)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -57.2456)
-volume_db = 4.324
-unit_size = 31.6
+volume_db = 15.856
+unit_size = 9.1
 max_db = 6.0
+max_distance = 2878.27
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6meg1rw370jr"]
+[gd_scene load_steps=3 format=3 uid="uid://c2iqj2px1ytrf"]
 
-[ext_resource type="Script" path="res://intro.gd" id="1_431p1"]
-[ext_resource type="FontFile" uid="uid://clt4uop4tx4ex" path="res://rubber-biscuit.bold.ttf" id="1_ov60v"]
+[ext_resource type="Script" path="res://end_intro.gd" id="1_btjem"]
+[ext_resource type="FontFile" uid="uid://clt4uop4tx4ex" path="res://rubber-biscuit.bold.ttf" id="2_ju4e5"]
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_431p1")
+script = ExtResource("1_btjem")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(955, 539)
@@ -28,16 +28,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -960.0
-offset_top = -496.0
+offset_top = -436.0
 offset_right = 960.0
-offset_bottom = 104.0
+offset_bottom = 164.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("1_ov60v")
-theme_override_fonts/bold_font = ExtResource("1_ov60v")
+theme_override_fonts/normal_font = ExtResource("2_ju4e5")
+theme_override_fonts/bold_font = ExtResource("2_ju4e5")
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
-text = "[center]YOU AWAKEN IN An ENDLESS VOID. YOU DO NOT REMEMBER A THING, except that you should be dead, an angelic voice speaks to you:[/center]"
+text = "[center]As your being begins to fade, your memories go away with it, you feel your soul slip back into limbo.[/center]"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="Control"]
 layout_mode = 1
@@ -47,19 +47,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -960.0
-offset_top = 110.0
+offset_top = 86.0
 offset_right = 960.0
-offset_bottom = 710.0
+offset_bottom = 686.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("1_ov60v")
-theme_override_fonts/bold_font = ExtResource("1_ov60v")
+theme_override_fonts/normal_font = ExtResource("2_ju4e5")
+theme_override_fonts/bold_font = ExtResource("2_ju4e5")
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
-text = "[center]\"I give you another chance at life, quell the riots and be set free. Don't hesitate,[color=red] they are sinners too[/color]\"[/center]"
+text = "[center]\"[color=gray]Was the voice really angelic or was I tricked by the devil?[/color]\"[/center]"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 7.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
