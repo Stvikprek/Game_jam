@@ -22,13 +22,13 @@ func fire_gun():
 		if bull_path.get_collider().collision_layer == 1:
 			if player.moving:
 				var num = randf()
-				if num < 0.6 + player.stuck:
+				if num < 0.55 + player.stuck:
 					player.health -= 1
 			else:
 				player.health -= 1
 		else:
 			var rand_num = randf()
-			if rand_num > 0.85 - player.stuck*1.5:
+			if rand_num > 0.85 - player.stuck:
 				player.health -= 0.5
 		if !$AudioStreamPlayer3D.playing:
 			$AudioStreamPlayer3D.stream = shootsound

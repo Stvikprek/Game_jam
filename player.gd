@@ -21,17 +21,17 @@ func _ready():
 		$AMBIENT.light_energy = 0.5
 	elif get_tree().current_scene.name == "lvl2":
 		$AMBIENT.light_energy = 0.2
-func zoom(value):
+func zoom(value,delta):
 	if camera.fov > value:
-		camera.fov -= 1
+		camera.fov -= 1*delta*80
 func unzoom():
 	if camera.fov < 75:
 		camera.fov += 1
 	else:
 		camera.fov = 75
-func stuck_drop():
+func stuck_drop(delta):
 	if stuck > 0:
-		stuck -= 0.001
+		stuck -= 0.001*delta*50
 func _input(event):
 	if  event is InputEventMouseMotion and !in_recoil:
 		rotation += (Vector3(-event.relative.y*0.005,-event.relative.x*0.005,0))
@@ -41,19 +41,19 @@ func _input(event):
 func _process(delta):
 	if leaning == false and (in_lean_rot == true):
 		if rotation.z < deg_to_rad(-2):
-			rotate_z(deg_to_rad(lean_rot/15))
+			rotate_z(deg_to_rad(lean_rot/15)*delta*80)
 		elif rotation.z > deg_to_rad(2):
-			rotate_z(deg_to_rad(-lean_rot/15))
+			rotate_z(deg_to_rad(-lean_rot/15)*delta*80)
 		elif rotation.z > deg_to_rad(-2) and rotation.z < deg_to_rad(2):
 			rotation.z = deg_to_rad(0)
 			in_lean_rot = false
 		unzoom()
 	if Input.is_action_pressed("Lean Right"):
 		if rotation.z > deg_to_rad(-lean_rot):
-			rotate_z(deg_to_rad(-lean_rot/20))
+			rotate_z(deg_to_rad(-lean_rot/20)*delta*50)
 		leaning = true
 		in_lean_rot = true
-		zoom(60)
+		zoom(60,delta)
 		
 
 	elif Input.is_action_just_released("Lean Right"):
@@ -61,29 +61,29 @@ func _process(delta):
 
 	if Input.is_action_pressed("Lean Left"):
 		if rotation.z < deg_to_rad(lean_rot):
-			rotate_z(deg_to_rad(lean_rot/20))
+			rotate_z(deg_to_rad(lean_rot/20)*delta*80)
 		in_lean_rot = true
 		leaning = true
-		zoom(60)
+		zoom(60,delta)
 		
 
 	elif Input.is_action_just_released("Lean Left"):
 		leaning = false
 		
 	if Input.is_action_pressed("Right"):
-		position.x += 0.1 - stuck
+		position.x += (0.1 - stuck)*delta*80
 		moving = true
-		stuck_drop()
+		stuck_drop(delta)
 
 	if Input.is_action_pressed("Left"):
-		position.x -= 0.1 - stuck
+		position.x -= (0.1 - stuck)*delta*80
 		moving = true
-		stuck_drop()
+		stuck_drop(delta)
 	if Input.is_action_just_released("Left") or Input.is_action_just_released("Right"):
 		moving = false
 	if moving == false:
-		if stuck <0.075:
-			stuck += 0.001
+		if stuck <0.085:
+			stuck += 0.0015 *delta*80
 	if Input.is_action_just_pressed("Shoot") and can_shoot:
 		if bullet_path.is_colliding():
 			var body = bullet_path.get_collider()
@@ -102,7 +102,7 @@ func _process(delta):
 	if $Timer.time_left <=0.45:
 		$CPUParticles3D.emitting = false
 	elif in_recoil:
-		rotation += Vector3(deg_to_rad(randf()*5),0,0)
+		rotation += Vector3(deg_to_rad(randf()*5*delta*80),0,0)
 	if $Timer.time_left <0.3:
 		in_recoil = false
 	position.x = clamp(position.x,-3.431,20.129)

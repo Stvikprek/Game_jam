@@ -36,9 +36,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("Shoot"):
 		alert = 1
 	if get_parent().get_node("Timer").time_left> get_parent().get_node("Timer").wait_time/2:
-		position.x += move_amnt
+		position.x += move_amnt*delta*50
 	else:
-		position.x -= move_amnt
+		position.x -= move_amnt*delta*50
 	if !alert:
 		if parent.order == index:
 			mesh.set_surface_override_material(0,xray_mesh) # To determine order

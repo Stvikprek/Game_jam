@@ -318,14 +318,17 @@ material = SubResource("CanvasItemMaterial_hx16h")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 6.79188, 0, 0, 0, 1, -4.78119, -5.63156, -20.7493)
+use_collision = true
 size = Vector3(4.10429, 2.12194, 2.72962)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 6.79188, 0, 0, 0, 1, 10.0605, -5.93746, -20.7493)
+use_collision = true
 size = Vector3(5.77146, 2.12194, 1.86096)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 6.79188, 0, 0, 0, 1, 23.6294, -8.19303, -20.7345)
+use_collision = true
 size = Vector3(3.11533, 2.81225, 2.65231)
 
 [node name="ENEMY6" parent="." instance=ExtResource("10_6djgo")]
@@ -335,14 +338,17 @@ index = 6
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 6.79188, 0, 0, 0, 1, 30.4507, -8.19303, -22.1161)
+use_collision = true
 size = Vector3(3.11533, 2.81225, 2.65231)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 6.79188, 0, 0, 0, 1, 5.23545, -12.0678, -44.266)
+use_collision = true
 size = Vector3(2.36915, 2.38496, 1.41486)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 6.79188, 0, 0, 0, 1, 14.428, -16.8069, -36.9027)
+use_collision = true
 size = Vector3(5.53438, 5.96636, 2.11028)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
